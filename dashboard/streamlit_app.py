@@ -820,232 +820,210 @@ if st.session_state.role == "super_admin":
 st.markdown("""
 <style>
 
-.main {
-    background-color: #f5f7fb;
+
+/* Hide Streamlit UI */
+#MainMenu,
+footer,
+header,
+[data-testid="stDeployButton"],
+[data-testid="stToolbar"],
+[data-testid="stDecoration"],
+[data-testid="stStatusWidget"] {
+    display: none !important;
 }
 
-.metric-card {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    text-align: center;
+/* Reduce top padding */
+.block-container {
+    padding-top: 1rem !important;
 }
 
-.slot-free {
-    background-color: #d4edda;
-    padding: 12px;
-    border-radius: 10px;
-    margin: 5px;
-    text-align: center;
-    color: green;
-    font-weight: bold;
+/* App Background */
+.stApp {
+    background: #f5f7fb;
 }
 
-.slot-occupied {
-    background-color: #f8d7da;
-    padding: 12px;
-    border-radius: 10px;
-    margin: 5px;
-    text-align: center;
-    color: red;
-    font-weight: bold;
-}
-
-.trace-box {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    border-left: 5px solid #1f77ff;
-    margin-top: 10px;
-}
-.stApp{
-    background:#f5f7fb;
-}
-
-section[data-testid="stSidebar"]{
+/* Sidebar */
+section[data-testid="stSidebar"] {
     background: linear-gradient(
         180deg,
-        #001845,
-        #003566
+        #081b4b,
+        #03122e
     );
 }
 
-section[data-testid="stSidebar"] *{
-    color:white !important;
-}
-
-.metric-card{
-    background:white;
-    border-radius:18px;
-    padding:20px;
-    box-shadow:0 4px 15px rgba(0,0,0,.08);
-    text-align:center;
-    transition:.3s;
-}
-
-.metric-card:hover{
-    transform:translateY(-3px);
-}
-
-.slot-free{
-    background:#e8f5e9;
-    color:#1b5e20;
-    border:2px solid #81c784;
-    border-radius:12px;
-    padding:15px;
-    margin:6px;
-    text-align:center;
-    font-weight:600;
-}
-
-.slot-occupied{
-    background:#ffebee;
-    color:#b71c1c;
-    border:2px solid #ef5350;
-    border-radius:12px;
-    padding:15px;
-    margin:6px;
-    text-align:center;
-    font-weight:600;
-}
-
-.trace-box{
-    background:white;
-    border-left:5px solid #2563eb;
-    border-radius:10px;
-    padding:15px;
-    margin:8px 0;
-    box-shadow:0 2px 8px rgba(0,0,0,.05);
-}
-
-h1,h2,h3{
-    color:#001845;
-}
-
-div[data-testid="stMetric"]{
-    background:white;
-    border-radius:15px;
-    padding:10px;
-    box-shadow:0 2px 10px rgba(0,0,0,.05);
-}
-/* Hide Main Menu */
-#MainMenu {
-    visibility: hidden;
-}
-
-/* Hide Footer */
-footer {
-    visibility: hidden;
-}
-
-/* Hide Header */
-header {
-    visibility: hidden;
-}
-
-/* Hide Deploy Button */
-[data-testid="stDeployButton"] {
-    display: none;
-}
-
-/* Hide Toolbar */
-[data-testid="stToolbar"] {
-    display: none;
-}
-
-/* Hide Github / Fork Icons */
-.st-emotion-cache-18ni7ap {
-    display: none;
-}
-
-/* Hide Top Right Decoration */
-.st-emotion-cache-z5fcl4 {
-    display: none;
-}
-
-/* Remove Extra Padding */
-.block-container {
-    padding-top: 1rem;
-}
-
-/* Main Background */
-.main {
-    background-color: #f5f7fb;
-}
-
-/* Sidebar Styling */
-section[data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #081b4b, #03122e);
-}
-
-/* Sidebar Text */
 section[data-testid="stSidebar"] * {
     color: white !important;
+}
+
+/* Titles */
+h1, h2, h3 {
+    color: #001845;
 }
 
 /* Metric Cards */
 .metric-card {
     background: white;
+    border-radius: 18px;
     padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
     text-align: center;
+    transition: .3s;
 }
 
-/* Free Slot */
+.metric-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Slot Cards */
 .slot-free {
-    background-color: #d4edda;
-    padding: 12px;
-    border-radius: 10px;
-    margin: 5px;
+    background: #e8f5e9;
+    border: 2px solid #81c784;
+    color: #1b5e20;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 6px;
     text-align: center;
-    color: green;
-    font-weight: bold;
+    font-weight: 600;
 }
 
-/* Occupied Slot */
 .slot-occupied {
-    background-color: #f8d7da;
-    padding: 12px;
-    border-radius: 10px;
-    margin: 5px;
+    background: #ffebee;
+    border: 2px solid #ef5350;
+    color: #b71c1c;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 6px;
     text-align: center;
-    color: red;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 /* CSP Trace */
 .trace-box {
     background: white;
-    padding: 15px;
+    border-left: 5px solid #2563eb;
     border-radius: 10px;
-    border-left: 5px solid #1f77ff;
-    margin-top: 10px;
-}
-/* Hide Streamlit top controls */
-header[data-testid="stHeader"] {
-    display: none !important;
+    padding: 15px;
+    margin: 8px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
 }
 
-[data-testid="stToolbar"] {
-    display: none !important;
+/* Metrics */
+div[data-testid="stMetric"] {
+    background: white;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.05);
 }
 
-[data-testid="stDecoration"] {
-    display: none !important;
+/* Selectbox */
+.stSelectbox div[data-baseweb="select"] > div {
+    background: white !important;
+    color: black !important;
+    border-radius: 10px !important;
 }
 
-[data-testid="stStatusWidget"] {
-    display: none !important;
+.stSelectbox span {
+    color: black !important;
 }
 
+div[role="listbox"] {
+    background: white !important;
+}
+
+div[role="option"] {
+    color: black !important;
+    background: white !important;
+}
+
+div[role="option"]:hover {
+    background: #f1f5f9 !important;
+}
+/* ============================= */
+/* HIDE STREAMLIT BRANDING/UI */
+/* ============================= */
+
+/* Main Menu */
 #MainMenu {
     visibility: hidden !important;
 }
 
+/* Footer */
 footer {
     visibility: hidden !important;
+}
+
+/* Header */
+header {
+    visibility: hidden !important;
+}
+
+/* Toolbar */
+[data-testid="stToolbar"] {
+    display: none !important;
+}
+
+/* Deploy Button */
+[data-testid="stDeployButton"] {
+    display: none !important;
+}
+
+/* Decoration */
+[data-testid="stDecoration"] {
+    display: none !important;
+}
+
+/* Status Widget */
+[data-testid="stStatusWidget"] {
+    display: none !important;
+}
+
+/* Header Actions */
+[data-testid="stHeaderActionElements"] {
+    display: none !important;
+}
+
+/* Floating Toolbar */
+div[data-testid="stToolbar"] {
+    display: none !important;
+}
+
+/* Full Header */
+header[data-testid="stHeader"] {
+    display: none !important;
+}
+
+/* Top Right Controls */
+button[kind="header"] {
+    display: none !important;
+}
+
+/* GitHub/Fork Buttons (older versions) */
+.st-emotion-cache-18ni7ap,
+.st-emotion-cache-z5fcl4,
+.st-emotion-cache-1avcm0n,
+.st-emotion-cache-79elbk,
+.st-emotion-cache-1wbqy5l {
+    display: none !important;
+}
+
+/* Hide Anchor Links Near Titles */
+a[href^="#"] {
+    display: none !important;
+}
+
+/* Remove Extra Top Space */
+.block-container {
+    padding-top: 1rem !important;
+}
+
+/* Hide Streamlit Hamburger */
+button[title="View fullscreen"] {
+    display: none !important;
+}
+
+/* Hide File Upload Decoration */
+[data-testid="stFileUploaderDropzoneInstructions"] {
+    display: none !important;
 }
 
 </style>
