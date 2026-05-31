@@ -1023,6 +1023,30 @@ section[data-testid="stSidebar"] * {
     border-left: 5px solid #1f77ff;
     margin-top: 10px;
 }
+/* Hide Streamlit top controls */
+header[data-testid="stHeader"] {
+    display: none !important;
+}
+
+[data-testid="stToolbar"] {
+    display: none !important;
+}
+
+[data-testid="stDecoration"] {
+    display: none !important;
+}
+
+[data-testid="stStatusWidget"] {
+    display: none !important;
+}
+
+#MainMenu {
+    visibility: hidden !important;
+}
+
+footer {
+    visibility: hidden !important;
+}
 
 </style>
 """, unsafe_allow_html=True)
